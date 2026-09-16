@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club de Exploradores del Futuro</title>
+    <style>
+        :root {
+            --principal: #0dbd42;
+            --fondo: #eff6ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: var(--fondo);
+            color: #172033;
+            font-family: system-ui, sans-serif;
+        }
+
+        main {
+            width: min(900px, 92%);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: .3rem;
+            color: var(--principal);
+            font-size: 3rem;
+        }
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        article {
+            padding: 1.2rem;
+            border: 2px solid #bfdbfe;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 8px 20px #1e3a8a18;
+        }
+
+        .icono {
+            font-size: 2.5rem;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: .8rem 1.2rem;
+            color: white;
+            background: var(--principal);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #mensaje {
+            min-height: 1.6em;
+            font-weight: 800;
+        }
+
+        @media (max-width: 650px) {
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p>Mi primera web</p>
+        <h1>Club de Exploradores de Futuro</h1>
+        <p>Elige una misión y descubre el mundo de la programación.</p>
+
+        <section class="tarjetas">
+            <article>
+                <div class="icono">🌙</div>
+                <h2>Luna</h2>
+                <p>Observa el cielo.</p>
+            </article>
+            <article>
+                <div class="icono">🌊</div>
+                <h2>Océano</h2>
+                <p>Investiga las mareas.</p>
+            </article>
+            <article>
+                <div class="icono">🌿</div>
+                <h2>Bosque</h2>
+                <p>Protege la naturaleza.</p>
+            </article>
+        </section>
+
+        <button id="boton">Recibir una misión</button>
+        <p id="mensaje" aria-live="polite"></p>
+    </main>
+
+    <script>
+        const mensajes = [
+            'Busca tres constelaciones.',
+            'Descubre un animal marino.',
+            'Dibuja la hoja de un árbol.'
+        ];
+        let turno = 0;
+        document.querySelector('#boton').addEventListener('click', () => {
+            document.querySelector('#mensaje').textContent = mensajes[turno];
+            turno = (turno + 1) % mensajes.length;
+        });
+    </script>
+</body>
+
+</html>
